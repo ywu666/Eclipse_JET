@@ -19,11 +19,11 @@ public class ExtractorTemplate
   protected final String TEXT_3 = NL + "   public ";
   protected final String TEXT_4 = " ";
   protected final String TEXT_5 = ";     ";
-  protected final String TEXT_6 = NL + "}" + NL + "" + NL + "" + NL + "public class A extends ";
-  protected final String TEXT_7 = "  {";
-  protected final String TEXT_8 = NL + "      private ";
-  protected final String TEXT_9 = ";";
-  protected final String TEXT_10 = NL + "}" + NL + "" + NL + "" + NL + "public class B extends ";
+  protected final String TEXT_6 = NL + "}" + NL + "" + NL + "" + NL + "public class ";
+  protected final String TEXT_7 = " extends ";
+  protected final String TEXT_8 = "  {";
+  protected final String TEXT_9 = NL + "      private ";
+  protected final String TEXT_10 = ";";
   protected final String TEXT_11 = NL + NL + "}" + NL;
   protected final String TEXT_12 = NL + NL + NL + NL;
   protected final String TEXT_13 = NL;
@@ -52,27 +52,31 @@ for (Field fb:b.getFields()){
 }
 }
     stringBuffer.append(TEXT_6);
-    stringBuffer.append(c.getField("className").get(argument));
+    stringBuffer.append(a.getSimpleName());
     stringBuffer.append(TEXT_7);
+    stringBuffer.append(c.getField("className").get(argument));
+    stringBuffer.append(TEXT_8);
     for (Field fa:a.getFields()){
   if(! common.equals(fa.getType()+fa.getName())){
-    stringBuffer.append(TEXT_8);
+    stringBuffer.append(TEXT_9);
     stringBuffer.append(fa.getType().getSimpleName());
     stringBuffer.append(TEXT_4);
     stringBuffer.append(fa.getName());
-    stringBuffer.append(TEXT_9);
+    stringBuffer.append(TEXT_10);
     }
 }
-    stringBuffer.append(TEXT_10);
-    stringBuffer.append(c.getField("className").get(argument));
+    stringBuffer.append(TEXT_6);
+    stringBuffer.append(b.getSimpleName());
     stringBuffer.append(TEXT_7);
-    for (Field fa:a.getFields()){
-  if(! common.equals(fa.getType()+fa.getName())){
+    stringBuffer.append(c.getField("className").get(argument));
     stringBuffer.append(TEXT_8);
-    stringBuffer.append(fa.getType().getSimpleName());
-    stringBuffer.append(TEXT_4);
-    stringBuffer.append(fa.getName());
+    for (Field fb:b.getFields()){
+  if(! common.equals(fb.getType()+fb.getName())){
     stringBuffer.append(TEXT_9);
+    stringBuffer.append(fb.getType().getSimpleName());
+    stringBuffer.append(TEXT_4);
+    stringBuffer.append(fb.getName());
+    stringBuffer.append(TEXT_10);
     }
 }
     stringBuffer.append(TEXT_11);
