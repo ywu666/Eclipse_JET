@@ -17,7 +17,7 @@ public class ClassGenerator
   protected final String TEXT_1 = NL + "public class ";
   protected final String TEXT_2 = "Implementation implements ";
   protected final String TEXT_3 = "{";
-  protected final String TEXT_4 = NL + "    public ";
+  protected final String TEXT_4 = NL + "    @Override" + NL + "    public ";
   protected final String TEXT_5 = " ";
   protected final String TEXT_6 = " (";
   protected final String TEXT_7 = " arg";
@@ -58,6 +58,8 @@ public class ClassGenerator
      } else if((m.getReturnType().getSimpleName()).equals("boolean")){ 
     stringBuffer.append(TEXT_10);
      } else if(! m.getReturnType().isPrimitive()){ 
+    stringBuffer.append(TEXT_11);
+     } else{ 
     stringBuffer.append(TEXT_11);
      } 
     stringBuffer.append(TEXT_12);
